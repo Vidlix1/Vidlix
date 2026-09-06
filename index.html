@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClipAI - AI Video Clipper</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080808;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 7%;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #8b5cf6;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 25px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 110px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #8b5cf6;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 20px;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto 35px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #8b5cf6;
+      color: white;
+      padding: 16px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .button:hover {
+      background: #7c3aed;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px 100px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 15px;
+      padding: 30px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #999;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Clip<span>AI</span></div>
+
+    <div>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>
+      Turn long videos into
+      <span>viral clips.</span>
+    </h1>
+
+    <p>
+      ClipAI uses artificial intelligence to find the best moments
+      in your videos and automatically turn them into short-form content.
+    </p>
+
+    <a class="button" href="#pricing">
+      Get Started →
+    </a>
+  </section>
+
+  <section class="features" id="features">
+
+    <div class="card">
+      <h3>🤖 AI Clipping</h3>
+      <p>
+        Let AI find the most interesting moments in your videos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Viral Moments</h3>
+      <p>
+        Automatically identify moments that could perform well
+        on TikTok, Reels and Shorts.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>📝 Captions</h3>
+      <p>
+        Generate engaging captions automatically for every clip.
+      </p>
+    </div>
+
+  </section>
+
+</body>
+</html>
