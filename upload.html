@@ -163,22 +163,6 @@
   </div>
 
   <script>
-    const upload = document.getElementById("video-upload");
-    const fileName = document.getElementById("file-name");
-const analyzeButton = document.getElementById("analyze-button");
-const status = document.getElementById("status");
-
-   upload.addEventListener("change", function() {
-  if (upload.files.length > 0) {
-    fileName.textContent =
-      "Selected: " + upload.files[0].name;
-
-    analyzeButton.style.display = "inline-block";
-    status.textContent = "";
-  }
-});
-
-<script>
 const upload = document.getElementById("video-upload");
 const fileName = document.getElementById("file-name");
 const analyzeButton = document.getElementById("analyze-button");
@@ -219,13 +203,10 @@ analyzeButton.addEventListener("click", async function () {
 
     if (response.ok) {
       status.textContent = "✅ Video uploaded successfully!";
-      console.log(data);
     } else {
       status.textContent = "❌ Upload failed: " + data.error;
     }
-
   } catch (error) {
-    console.error(error);
     status.textContent = "❌ Could not connect to Vidlix server.";
   }
 
