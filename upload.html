@@ -179,54 +179,34 @@ const status = document.getElementById("status");
 });
 
 <script>
-
 const upload = document.getElementById("video-upload");
 const fileName = document.getElementById("file-name");
 const analyzeButton = document.getElementById("analyze-button");
 const status = document.getElementById("status");
 
 upload.addEventListener("change", function () {
-
   if (upload.files.length > 0) {
-
-    fileName.textContent =
-      "Selected: " + upload.files[0].name;
-
+    fileName.textContent = "Selected: " + upload.files[0].name;
     analyzeButton.style.display = "inline-block";
-
     status.textContent = "";
-
   }
-
 });
 
-
 analyzeButton.addEventListener("click", async function () {
-
   const file = upload.files[0];
 
   if (!file) {
-
-    status.textContent =
-      "Please select a video first.";
-
+    status.textContent = "Please select a video first.";
     return;
-
   }
 
-  status.textContent =
-    "⏳ Uploading video...";
-
+  status.textContent = "⏳ Uploading video...";
   analyzeButton.disabled = true;
 
-
   const formData = new FormData();
-
   formData.append("video", file);
 
-
   try {
-
     const response = await fetch(
       "https://vidlix.onrender.com/upload",
       {
@@ -237,35 +217,20 @@ analyzeButton.addEventListener("click", async function () {
 
     const data = await response.json();
 
-
     if (response.ok) {
-
-      status.textContent =
-        "✅ Video uploaded successfully!";
-
+      status.textContent = "✅ Video uploaded successfully!";
       console.log(data);
-
     } else {
-
-      status.textContent =
-        "❌ Upload failed: " + data.error;
-
+      status.textContent = "❌ Upload failed: " + data.error;
     }
 
   } catch (error) {
-
     console.error(error);
-
-    status.textContent =
-      "❌ Could not connect to Vidlix server.";
-
+    status.textContent = "❌ Could not connect to Vidlix server.";
   }
 
-
   analyzeButton.disabled = false;
-
 });
-
 </script>
 
 </body>
