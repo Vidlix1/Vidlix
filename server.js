@@ -2,10 +2,16 @@ const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
 const fs = require("fs");
+const OpenAI = require("openai");
 
 const app = express();
 
 app.use(cors());
+
+// OpenAI
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 // Skapa uploads-mappen automatiskt
 const uploadFolder = "uploads";
@@ -29,26 +35,48 @@ const upload = multer({
   storage: storage
 });
 
-// Testa att servern fungerar
+// Testa servern
 app.get("/", (req, res) => {
   res.send("Vidlix AI Server is running!");
 });
 
-// Ta emot video
-app.post("/upload", upload.single("video"), (req, res) => {
+// Upload + AI transkribering
+app.post("/upload", upload.single("video"), async (req, res) => {
 
-  if (!req.file) {
-    return res.status(400).json({
-      error: "No video uploaded"
+  try {
+
+    if (!req.file) {
+      return res.status(400).json({
+        error: "No video uploaded"
+      });
+    }
+
+    console.log("Video uploaded:", req.file.filename);
+
+    // Skicka videon till AI
+    const transcription =
+      await openai.audio.transcriptions.create({
+        file: fs.createReadStream(req.file.path),
+        model: "gpt-4o-mini-transcribe"
+      });
+
+    console.log("Transcript:", transcription.text);
+
+    res.json({
+      message: "Video analyzed successfully!",
+      filename: req.file.filename,
+      transcript: transcription.text
     });
+
+  } catch (error) {
+
+    console.error("AI Error:", error);
+
+    res.status(500).json({
+      error: "AI analysis failed"
+    });
+
   }
-
-  console.log("Video uploaded:", req.file.filename);
-
-  res.json({
-    message: "Video uploaded successfully!",
-    filename: req.file.filename
-  });
 
 });
 
