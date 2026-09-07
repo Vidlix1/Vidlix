@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 
 // Upload + AI transkribering
 app.post("/upload", upload.single("video"), async (req, res) => {
-
+console.log("UPLOAD REQUEST RECEIVED!");
   try {
 
     if (!req.file) {
